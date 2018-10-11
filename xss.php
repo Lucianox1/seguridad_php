@@ -6,8 +6,8 @@ if (isset($_POST['htoken'])) {
 	$cone = new conexion();//creamos un nuevo objeto de la clase conexion
     $sql = "insert into frutas (f_nombre,f_color) values (:nom,:col) ";//preparamos la consulta
     $statement = $cone->prepare($sql);//preparamos la consulta
-    $statement->bindParam(":nom",htmlspecialchars($_POST['txtnombre']));//asigamos parametros para nombre y color
-    $statement->bindParam(":col",htmlspecialchars($_POST['txtcolor']));
+    $statement->bindParam(":nom",htmlspecialchars($_POST['txtnombre']),PDO::PARAM_STR);//asigamos parametros para nombre y color
+    $statement->bindParam(":col",htmlspecialchars($_POST['txtcolor']),PDO::PARAM_STR);
     $statement->execute();
 }
 
